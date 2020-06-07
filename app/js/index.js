@@ -20,5 +20,19 @@ const getPosts = () => {
 }
 
 const buildPosts = (blogPosts) =>{
-    console.log(blogPosts);
+    
+    let blogPostsContent = "";
+    for (blogPost of blogPosts) {
+        const blogPostDate = new Date(parseInt(blogPost.added_date)).toDateString();
+        blogPostsContent += `
+        <div class="post">
+            <div class="post-image"></div>
+            <div class="post-content">
+                <div class="post-date">${blogPostDate}</div>
+                <div class="post-title">${blogPost.title}</div>
+                <div class="post-text">${blogPost.content}</div>
+            </div>
+        </div>`
+    }
+    document.querySelector(".blog-posts").innerHTML = blogPostsContent;
 }
