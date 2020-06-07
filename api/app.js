@@ -25,6 +25,10 @@ app.use((req,res,next)=>{
     next();
 });
 
+app.get("/api/posts",(req, res)=>{
+    res.status(200).send(postData.get())
+});
+
 app.get("/api/posts/:post_id", (req, res)=>{
     // res.status(200).send(postData.getIndividualPost(postid));
     const postid = req.params.post_id;
