@@ -20,6 +20,10 @@ const postData = new Post();
 //     res.status(200).send(postData.get())
 // });
 
+app.use((req,res,next)=>{
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next();
+});
 
 app.get("/api/posts/:post_id", (req, res)=>{
     // res.status(200).send(postData.getIndividualPost(postid));
