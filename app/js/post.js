@@ -13,8 +13,34 @@ const getPostIdParam = () => {
 
 const getPost = () => {
     const postId = getPostIdParam();
+    const url = `${API_URL}${postId}`;
+    fetch(url, {
+        method: 'GET'
+    }).then((response)=>{
+        return response.json();
+    }).then((data)=>{
+        buildPost(data);
+    })
+
 }
 
 const buildPost = (data) => {
+    
+    const postDate = new Date(parseInt(data.added_date)).toDateString();
+    const postImage = `${API_BASE_URL}${data.post_image}`;
+    // console.log(imageLink);
+
+    // const postDetails = `<div id="individual-post-title">${data.title}</div>
+    //     <div id="individual-post-date">${blogDate}</div>
+    //     <div id="individual-post-content">${data.content}
+    // </div>`
+
+    // document.querySelector('.post-container').innerHTML = postDetails;
+
+    document.querySelector('header').style.backgroundImage = `url(${postImage})`;
+    document.getElementById('individual-post-title').innerText = data.title;
+    document.getElementById('individual-post-date').innerText = `Published on ${postDate}`;
+    document.getElementById('individual-post-content').innerText = data.content;
+
 
 }

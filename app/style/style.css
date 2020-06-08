@@ -15,7 +15,7 @@ header {
 }
 
 .home-page header, .new-post-page header  {
-    background-image: url(../assets/banner.jpeg);
+    background-image: url(../assets/banner.jpg);
 }
 
 .post-link {
@@ -106,6 +106,7 @@ header::before {
 .profile-name {
     font-size: 3em;
     font-weight: bold;
+    margin-top: 20px;
 }
 
 .subtext {
